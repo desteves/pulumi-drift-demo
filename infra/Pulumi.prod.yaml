@@ -1,0 +1,8 @@
+config:
+  aws:region: us-west-2
+  pulumi-drift-demo:containerPort: "80"
+  pulumi-drift-demo:cpu: "512"
+  pulumi-drift-demo:memory: "128"
+
+environment:
+    - pulumi-drift-demo-env 
