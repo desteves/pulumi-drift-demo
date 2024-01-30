@@ -1,0 +1,25 @@
+name: main-merge-iac
+
+on:
+  push:
+    branches:
+      - main # This will run the workflow only when a push occurs on the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+
+      # Add your build/test steps here
+      # ...
+      # This step will run only when a push occurs on the specified branch
+
+      - name: update prod iac
+        uses: pulumi/actions@v5
+        with:
+            command: update
+            stack-name: diana-pulumi-corp/pulumi-drift-demo/prod
+            work-dir: ./infra
