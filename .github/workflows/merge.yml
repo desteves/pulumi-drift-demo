@@ -19,7 +19,15 @@ jobs:
       # Add your build/test steps here
       # ...
       # This step will run only when a push occurs on the specified branch
+      - name: setup node 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
+      - name: install deps
+        working-directory: ./infra
+        run: npm install
+        
       - name: update prod iac
         uses: pulumi/actions@v5
         with:
