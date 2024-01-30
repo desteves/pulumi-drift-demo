@@ -25,7 +25,16 @@ jobs:
             echo "Pulumi access token does not exist. Aborting workflow..."
             exit 1
             fi
+            
+      - name: setup node 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
+      - name: install deps
+        working-directory: ./infra
+        run: npm install
+        
       - name: pulumi preview
         uses: pulumi/actions@v5
         with:
